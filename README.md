@@ -9,12 +9,14 @@ Interactuar con el menú interactivo que aparecerá en la consola, seleccionando
 
 Tecnologías utilizadas: 
 
-Lenguaje C#
-Entorno Visual Studio
-GitHub
-Archivos JSON
+Lenguaje C# -
+Entorno Visual Studio -
+GitHub -
+Archivos JSON -
 
 Integrantes del equipo:
-
-Toledo, Caleb
-Vergara,  Dana
+Farias, Leonardo -
+Miño, Juan -
+Toledo, Caleb -
+Vergara,  Dana -
+Vieyra Franco
