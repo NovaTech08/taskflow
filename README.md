@@ -1,4 +1,5 @@
-# Descripción del proyecto:
+# NovaTech
+Descripción del proyecto:
 Se esta desarrollando un sistema llamado "TaskFlow", que será una aplicación para gestión de tareas empresariales. Este nuevo sistema va a permitir, crear tareas, asignarlas a usuarios, marcar estados (pendiente,en progreso, finalizada) y consultar listado de tareas, exponer funcionalidades mediante una consola interactiva.
 
 Cómo ejecutarlo:
@@ -7,9 +8,13 @@ Compilar y ejecutar:Ingresar el siguiente comando para que .NET inicie la aplica
 Interactuar con el menú interactivo que aparecerá en la consola, seleccionando opciones del 1 al 6 para gestionar las tareas.
 
 Tecnologías utilizadas: 
+
 Lenguaje C#
 Entorno Visual Studio
 GitHub
 Archivos JSON
 
 Integrantes del equipo:
+
+Toledo, Caleb
+Vergara,  Dana
