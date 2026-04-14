@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using TaskFlow.Utils;
+
+// Instanciamos el menú y lo arrancamos. ¡Nada más!
+var menu = new ConsoleMenu();
+menu.MostrarMenu();
