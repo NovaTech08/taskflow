@@ -21,7 +21,7 @@ namespace TaskFlow.Models
 
       public TaskStatus Estado { get; set; } = TaskStatus.Pendiente;
 
-      public DateTime FechaDeCreacion { get; set; } = DateTime.Now;
+      public DateTime FechaDeCreacion { get; set; } = DateTime.UtcNow;
 
       public DateTime? FechaDeModificacion { get; set; }
    }
