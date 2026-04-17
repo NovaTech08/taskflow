@@ -1,9 +1,4 @@
-obj/
-bin/
-*.user
-*.suo
+[Bb]in/
+[Oo]bj/
 .vs/
-*.cache
-*.nuget.g.props
-*.nuget.g.targets
-*.nuget.dgspec.json
+.vscode/
