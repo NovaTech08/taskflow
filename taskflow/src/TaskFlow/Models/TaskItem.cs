@@ -12,11 +12,17 @@ namespace TaskFlow.Models
     public class TaskItem
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Responsible { get; set; }
-        public TaskStatus Status { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+
+        public string Titulo { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public string Responsable { get; set; }
+
+        public TaskStatus Estado { get; set; } = TaskStatus.Pendiente;
+
+        public DateTime FechaDeCreacion { get; set; } = DateTime.UtcNow;
+
+        public DateTime? FechaDeModificacion { get; set; }
     }
 }
