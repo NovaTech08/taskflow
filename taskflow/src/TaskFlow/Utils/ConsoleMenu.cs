@@ -42,11 +42,19 @@ namespace TaskFlow.Utils
                         }
                         else
                         {
-                            foreach (var t in tareas)
-                            {
-                                Console.WriteLine($"ID: {t.Id} | {t.Titulo} | Estado: {t.Estado} | Responsable: {t.Responsable}");
-                            }
-                        }
+                     foreach (var t in tareas){
+                if (t.FechaDeCreacion == t.FechaDeModificacion)
+            {
+                Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm}");
+            }
+            else
+            {
+                Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm} | Modificado: {t.FechaDeModificacion:dd/MM/yyyy HH:mm}");
+            }
+            Console.WriteLine(new string('-', 40));
+        }
+    }
+    
                         break;
 
                     case "3":
