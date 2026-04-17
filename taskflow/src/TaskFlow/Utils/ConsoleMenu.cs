@@ -1,5 +1,6 @@
 using System;
 using TaskFlow.Services;
+using TaskFlow.Models;
 
 namespace TaskFlow.Utils
 {
@@ -50,10 +51,34 @@ namespace TaskFlow.Utils
                         break;
 
                     case "3":
-                        // Acá el Dev 3 va a meter su código
-                        Console.WriteLine("Opción en desarrollo...");
-                        break;
+                        Console.Write("ID de la tarea: ");
+                        if(!int.TryParse(Console.ReadLine(), out int id))
+{
+                            Console.WriteLine("ID inválido, ingresá solo números.");
+                            break;
+                        }
 
+                        var tareaEncontrada = _service.BuscarPorId(id);
+                        if (tareaEncontrada == null)
+                        {
+                            Console.WriteLine("Tarea no encontrada.");
+                            break;
+                        }
+
+                        Console.WriteLine($"Tarea: {tareaEncontrada.Title} | Estado actual: {tareaEncontrada.Status}");
+                        Console.WriteLine("1. Pendiente  2. En Progreso  3. Completada");
+                        Console.Write("Nuevo estado: ");
+                        var op = Console.ReadLine();
+
+                        TaskFlow.Models.TaskStatus estado;
+                        if (op == "1") estado = TaskFlow.Models.TaskStatus.Pendiente;
+                        else if (op == "2") estado = TaskFlow.Models.TaskStatus.EnProgreso;
+                        else if (op == "3") estado = TaskFlow.Models.TaskStatus.Completada;
+                        else { Console.WriteLine("Opción inválida."); break; }
+
+                        bool ok = _service.ActualizarEstado(id, estado);
+                        Console.WriteLine(ok ? "Estado actualizado." : "No se pudo actualizar.");
+                        break;
                     case "4":
                         return; // Sale del bucle y termina el programa
 
