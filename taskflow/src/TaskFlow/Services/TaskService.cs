@@ -9,6 +9,10 @@ namespace TaskFlow.Services
     public class TaskService
     {
         private List<TaskItem> _tasks = new List<TaskItem>();
+        public TaskItem BuscarPorId(int id)
+        {
+            return _tasks.FirstOrDefault(t => t.Id == id);
+        }
 
         //(Dev 1): Método que crea una nueva tarea
         public void CrearTarea(string titulo, string descripcion, string responsable)
@@ -28,10 +32,21 @@ namespace TaskFlow.Services
             _tasks.Add(nuevaTarea);
         }
 
+        // Método de filtrado (el que pide la consigna)
+        public List<TaskItem> GetTasksByStatus(TaskFlow.Models.TaskStatus status)
         // Commit 1 (Dev 2): Método que devuelve la lista con todos los datos
         public List<TaskItem> GetAllTasks()
         {
             return _tasks;
+        }
+        public bool ActualizarEstado(int id, TaskFlow.Models.TaskStatus nuevoEstado)
+        {
+            var tarea = _tasks.FirstOrDefault(t => t.Id == id);
+            if (tarea == null) return false;
+
+            tarea.Status = nuevoEstado;
+            tarea.UpdatedAt = DateTime.Now;
+            return true;
         }
     }
 }
