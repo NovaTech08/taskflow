@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TaskFlow.Models; 
+using TaskFlow.Models;
+using TaskStatus = TaskFlow.Models.TaskStatus;
 
 namespace TaskFlow.Services
 {
@@ -13,16 +14,30 @@ namespace TaskFlow.Services
             return _tasks.FirstOrDefault(t => t.Id == id);
         }
 
-        // Método principal para listar todo (el que usa el Menú)
-        public List<TaskItem> GetAllTasks()
+        //(Dev 1): Método que crea una nueva tarea
+        public void CrearTarea(string titulo, string descripcion, string responsable)
         {
-            return _tasks;
+            int nuevoId = _tasks.Count > 0 ? _tasks.Max(t => t.Id) + 1 : 1;
+
+            var nuevaTarea = new TaskItem
+            {
+                Id = nuevoId,
+                Titulo = titulo,
+                Descripcion = descripcion,
+                Responsable = responsable,
+                Estado = TaskStatus.Pendiente,
+                FechaDeCreacion = DateTime.UtcNow
+            };
+
+            _tasks.Add(nuevaTarea);
         }
 
         // Método de filtrado (el que pide la consigna)
         public List<TaskItem> GetTasksByStatus(TaskFlow.Models.TaskStatus status)
+        // Commit 1 (Dev 2): Método que devuelve la lista con todos los datos
+        public List<TaskItem> GetAllTasks()
         {
-            return _tasks.Where(t => t.Status == status).ToList();
+            return _tasks;
         }
         public bool ActualizarEstado(int id, TaskFlow.Models.TaskStatus nuevoEstado)
         {
@@ -36,5 +51,3 @@ namespace TaskFlow.Services
     }
 }
 
-
-    

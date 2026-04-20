@@ -30,8 +30,8 @@ namespace TaskFlow.Utils
                 switch (opcion)
                 {
                     case "1":
-                        // Acá el Dev 1 va a meter su código
-                        Console.WriteLine("Opción en desarrollo...");
+                        // Ahora es instancia, puede usar _service
+                        CrearNuevaTarea();
                         break;
 
                     case "2":
@@ -45,7 +45,7 @@ namespace TaskFlow.Utils
                         {
                             foreach (var t in tareas)
                             {
-                                Console.WriteLine($"ID: {t.Id} | {t.Title} | Estado: {t.Status} | Responsable: {t.Responsible}");
+                                Console.WriteLine($"ID: {t.Id} | {t.Titulo} | Estado: {t.Estado} | Responsable: {t.Responsable}");
                             }
                         }
                         break;
@@ -87,6 +87,33 @@ namespace TaskFlow.Utils
                         break;
                 }
             }
+        }
+        private void CrearNuevaTarea()
+        {
+            Console.Clear();
+            Console.WriteLine("--- Registro de Nueva Tarea ---");
+
+            Console.Write("Título (obligatorio): ");
+            string titulo = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(titulo))
+            {
+                Console.WriteLine("Error: El título no puede estar vacío.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.Write("Descripción (opcional): ");
+            string descripcion = Console.ReadLine();
+
+            Console.Write("Responsable: ");
+            string responsable = Console.ReadLine();
+
+            // Llamada al servicio para crear la tarea
+            _service.CrearTarea(titulo, descripcion, responsable);
+
+            Console.WriteLine("\n¡Tarea creada exitosamente! Presione una tecla para volver.");
+            Console.ReadKey();
         }
     }
 }
