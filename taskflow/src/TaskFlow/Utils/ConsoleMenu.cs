@@ -43,25 +43,26 @@ namespace TaskFlow.Utils
                         }
                         else
                         {
-                     foreach (var t in tareas){
-                if (t.FechaDeCreacion == t.FechaDeModificacion)
-            {
-                Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm}");
-            }
-            else
-            {
-                Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm} | Modificado: {t.FechaDeModificacion:dd/MM/yyyy HH:mm}");
-            }
-            Console.WriteLine(new string('-', 40));
-        }
-    }
-    
+                            foreach (var t in tareas)
+                            {
+                                if (t.FechaDeCreacion == t.FechaDeModificacion)
+                                {
+                                    Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm} | Modificado: {t.FechaDeModificacion:dd/MM/yyyy HH:mm}");
+                                }
+                                Console.WriteLine(new string('-', 40));
+                            }
+                        }
+
                         break;
 
                     case "3":
                         Console.Write("ID de la tarea: ");
-                        if(!int.TryParse(Console.ReadLine(), out int id))
-{
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
                             Console.WriteLine("ID inválido, ingresá solo números.");
                             break;
                         }
@@ -73,7 +74,7 @@ namespace TaskFlow.Utils
                             break;
                         }
 
-                        Console.WriteLine($"Tarea: {tareaEncontrada.Title} | Estado actual: {tareaEncontrada.Status}");
+                        Console.WriteLine($"Tarea: {tareaEncontrada.Titulo} | Estado actual: {tareaEncontrada.Estado}");
                         Console.WriteLine("1. Pendiente  2. En Progreso  3. Completada");
                         Console.Write("Nuevo estado: ");
                         var op = Console.ReadLine();

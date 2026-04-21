@@ -34,6 +34,10 @@ namespace TaskFlow.Services
 
         // Método de filtrado (el que pide la consigna)
         public List<TaskItem> GetTasksByStatus(TaskFlow.Models.TaskStatus status)
+        {
+            return _tasks.Where(t => t.Estado == status).ToList();
+        }
+
         // Commit 1 (Dev 2): Método que devuelve la lista con todos los datos
         public List<TaskItem> GetAllTasks()
         {
@@ -44,8 +48,8 @@ namespace TaskFlow.Services
             var tarea = _tasks.FirstOrDefault(t => t.Id == id);
             if (tarea == null) return false;
 
-            tarea.Status = nuevoEstado;
-            tarea.UpdatedAt = DateTime.Now;
+            tarea.Estado = nuevoEstado;
+            tarea.FechaDeModificacion = DateTime.Now;
             return true;
         }
     }
