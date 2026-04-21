@@ -16,7 +16,7 @@ GitHub -
 Archivos JSON -
 
 Integrantes del equipo: 
-Babini, Dante
+Babini, Dante -
 Farias, Leonardo -
 Miño, Juan -
 Toledo, Caleb -
