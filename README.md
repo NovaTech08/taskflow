@@ -15,7 +15,8 @@ Entorno Visual Studio -
 GitHub -
 Archivos JSON -
 
-Integrantes del equipo:
+Integrantes del equipo: 
+Babini, Dante -
 Farias, Leonardo -
 Miño, Juan -
 Toledo, Caleb -
