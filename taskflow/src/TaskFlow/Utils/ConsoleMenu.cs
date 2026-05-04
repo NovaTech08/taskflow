@@ -18,12 +18,16 @@ namespace TaskFlow.Utils
         {
             while (true)
             {
-                Console.WriteLine("\n=== TASKFLOW ===");
-                Console.WriteLine("1. Crear tarea");
-                Console.WriteLine("2. Listar tareas");
-                Console.WriteLine("3. Cambiar estado");
-                Console.WriteLine("4. Salir");
-                Console.Write("Elegí una opción: ");
+                Console.WriteLine("\n" + new string('=', 40));
+                Console.WriteLine("       TASKFLOW - Gestión de Tareas");
+                Console.WriteLine(new string('=', 40));
+                Console.WriteLine("  [1] Crear tarea");
+                Console.WriteLine("  [2] Listar tareas");
+                Console.WriteLine("  [3] Cambiar estado");
+                Console.WriteLine("  [4] Salir");
+                Console.WriteLine(new string('-', 40));
+                Console.Write("  Elegí una opción: ");
+
 
                 var opcion = Console.ReadLine();
 
