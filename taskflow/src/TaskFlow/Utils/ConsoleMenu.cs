@@ -49,7 +49,7 @@ namespace TaskFlow.Utils
                         {
                             foreach (var t in tareas)
                             {
-                                if (t.FechaDeCreacion == t.FechaDeModificacion)
+                                if (t.FechaDeCreacion == t.FechaDeModificacion || t.FechaDeModificacion == null)
                                 {
                                     Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm}");
                                 }
