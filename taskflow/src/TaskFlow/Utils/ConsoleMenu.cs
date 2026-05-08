@@ -18,12 +18,16 @@ namespace TaskFlow.Utils
         {
             while (true)
             {
-                Console.WriteLine("\n=== TASKFLOW ===");
-                Console.WriteLine("1. Crear tarea");
-                Console.WriteLine("2. Listar tareas");
-                Console.WriteLine("3. Cambiar estado");
-                Console.WriteLine("4. Salir");
-                Console.Write("Elegí una opción: ");
+                Console.WriteLine("\n" + new string('=', 40));
+                Console.WriteLine("       TASKFLOW - Gestión de Tareas");
+                Console.WriteLine(new string('=', 40));
+                Console.WriteLine("  [1] Crear tarea");
+                Console.WriteLine("  [2] Listar tareas");
+                Console.WriteLine("  [3] Cambiar estado");
+                Console.WriteLine("  [4] Salir");
+                Console.WriteLine(new string('-', 40));
+                Console.Write("  Elegí una opción: ");
+
 
                 var opcion = Console.ReadLine();
 
@@ -45,7 +49,7 @@ namespace TaskFlow.Utils
                         {
                             foreach (var t in tareas)
                             {
-                                if (t.FechaDeCreacion == t.FechaDeModificacion)
+                                if (t.FechaDeCreacion == t.FechaDeModificacion || t.FechaDeModificacion == null)
                                 {
                                     Console.WriteLine($"ID: {t.Id} | Titulo: {t.Titulo} | Descripcion: {t.Descripcion} | Estado: {t.Estado} | Responsable: {t.Responsable} | Creado: {t.FechaDeCreacion:dd/MM/yyyy HH:mm}");
                                 }
@@ -102,21 +106,26 @@ namespace TaskFlow.Utils
             Console.Clear();
             Console.WriteLine("--- Registro de Nueva Tarea ---");
 
-            Console.Write("Título (obligatorio): ");
-            string titulo = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(titulo))
+            // Función local para leer y validar entradas no vacías
+            string LeerCampoRequerido(string prompt)
             {
-                Console.WriteLine("Error: El título no puede estar vacío.");
-                Console.ReadKey();
-                return;
+                while (true)
+                {
+                    Console.Write(prompt);
+                    var input = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(input))
+                        return input.Trim();
+
+                    Console.WriteLine("Error: Este campo no puede estar vacío. Presione una tecla para reintentar...");
+                    Console.ReadKey();
+                    // Mover el cursor a nueva línea para que el prompt quede ordenado
+                    Console.WriteLine();
+                }
             }
 
-            Console.Write("Descripción (opcional): ");
-            string descripcion = Console.ReadLine();
-
-            Console.Write("Responsable: ");
-            string responsable = Console.ReadLine();
+            string titulo = LeerCampoRequerido("Título (obligatorio): ");
+            string descripcion = LeerCampoRequerido("Descripción (obligatoria): ");
+            string responsable = LeerCampoRequerido("Responsable (obligatorio): ");
 
             // Llamada al servicio para crear la tarea
             _service.CrearTarea(titulo, descripcion, responsable);
